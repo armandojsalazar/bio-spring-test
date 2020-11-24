@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Correct Guess</title>
+</head>
+<body>
+
+<h1 th:if="${correct}">Congratulation! You guessed right!</h1>
+
+<h1 th:if="${!correct}">You guessed <span th:text="${number}"></span>. Computer rolled <span th:text="${randomNumber}"></span>!</h1>
+
+
+</body>
+</html>
