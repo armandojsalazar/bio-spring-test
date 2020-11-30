@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div>
+<nav th:replace="partials/section :: navbar"></nav>
+    <main class="container text-center">
+        <div class="card">
 
-<h1 th:text="${post.title}"></h1>
-    <p><strong th:text="${post.author}"></strong></p>
-<p th:text="${post.body}"></p>
-<p th:text="${post.id}"></p>
+            <h1 th:text="${post.title}"></h1>
+                <p><strong th:text="${post.author}"></strong></p>
+                <p th:text="${post.body}"></p>
+                <p th:text="${post.id}"></p>
 
-</div>
+        </div>
+    </main>
 </body>
 </html>

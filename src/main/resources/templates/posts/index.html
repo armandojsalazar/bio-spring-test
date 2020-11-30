@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="partials/section :: navbar"></nav>
 <!--<h1 th:text="${posts.get(0).title}"></h1>-->
 <!--<p th:text="${posts.get(0).body}"></p>-->
 <!--<h1 th:text="${posts.get(1).title}"></h1>-->
 <!--<p th:text="${posts.get(1).body}"></p>-->
-
-<div th:each="post : ${posts}">
+<main class="container text-center">
+<div class="card " th:each="post : ${posts}">
     <hr>
     <p th:text="'ID #' + ${post.id}"></p>
     <h1 th:text="${post.title}"></h1>
     <p><strong th:text="'Post made by: ' + ${post.author}"></strong></p>
     <p th:text="${post.body}"></p>
 </div>
+</main>
 </body>
 </html>

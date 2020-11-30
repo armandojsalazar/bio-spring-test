@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
+<head th:replace="partials/head :: head('Roll-dice')">
     <meta charset="UTF-8">
     <title>Dice Roll</title>
 </head>
@@ -8,13 +8,20 @@
 <nav th:replace="partials/section.html :: navbar"></nav>
 <h1 th:replace="partials/section.html :: header"></h1>
 <p>Pick a number you think the die will roll on:</p>
-<a href="/roll-dice/1">1</a>
-<a href="/roll-dice/2">2</a>
-<a href="/roll-dice/3">3</a>
-<a href="/roll-dice/4">4</a>
-<a href="/roll-dice/5">5</a>
-<a href="/roll-dice/6">6</a>
-
+<!--<a href="/roll-dice/1">1</a>-->
+<!--<a href="/roll-dice/2">2</a>-->
+<!--<a href="/roll-dice/3">3</a>-->
+<!--<a href="/roll-dice/4">4</a>-->
+<!--<a href="/roll-dice/5">5</a>-->
+<!--<a href="/roll-dice/6">6</a>-->
+<div class="container center-text">
+<a th:href="@{/roll-dice/1}">1</a><br>
+<a th:href="@{/roll-dice/2}">2</a><br>
+<a th:href="@{/roll-dice/3}">3</a><br>
+<a th:href="@{/roll-dice/4}">4</a><br>
+<a th:href="@{/roll-dice/5}">5</a><br>
+<a th:href="@{/roll-dice/6}">6</a><br>
+</div>
 <footer th:replace="partials/section.html :: footer">
     &copy; 2020
 </footer>
