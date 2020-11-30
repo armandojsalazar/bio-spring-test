@@ -5,11 +5,12 @@
     <title>Correct Guess</title>
 </head>
 <body>
-
+<nav th:replace="partials/section.html :: navbar"></nav>
+<h1 th:replace="partials/section.html :: header"></h1>
 <h1 th:if="${correct}">Congratulation! You guessed right!</h1>
 
 <h1 th:if="${!correct}">You guessed <span th:text="${number}"></span>. Computer rolled <span th:text="${randomNumber}"></span>!</h1>
 
-
+<footer th:replace="partials/section.html :: footer"></footer>
 </body>
 </html>

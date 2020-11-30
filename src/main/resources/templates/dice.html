@@ -5,8 +5,8 @@
     <title>Dice Roll</title>
 </head>
 <body>
-
-<h1>Welcome to Dice Roller</h1>
+<nav th:replace="partials/section.html :: navbar"></nav>
+<h1 th:replace="partials/section.html :: header"></h1>
 <p>Pick a number you think the die will roll on:</p>
 <a href="/roll-dice/1">1</a>
 <a href="/roll-dice/2">2</a>
@@ -15,5 +15,8 @@
 <a href="/roll-dice/5">5</a>
 <a href="/roll-dice/6">6</a>
 
+<footer th:replace="partials/section.html :: footer">
+    &copy; 2020
+</footer>
 </body>
 </html>
