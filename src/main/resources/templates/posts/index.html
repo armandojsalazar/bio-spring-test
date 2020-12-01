@@ -6,6 +6,7 @@
 </head>
 <body>
 <nav th:replace="partials/section :: navbar"></nav>
+    <header th:replace="partials/header :: header('Welcome to the Blog Post!')"></header>
 <!--<h1 th:text="${posts.get(0).title}"></h1>-->
 <!--<p th:text="${posts.get(0).body}"></p>-->
 <!--<h1 th:text="${posts.get(1).title}"></h1>-->
@@ -15,9 +16,9 @@
     <hr>
     <p th:text="'ID #' + ${post.id}"></p>
     <h1 th:text="${post.title}"></h1>
-    <p><strong th:text="'Post made by: ' + ${post.author}"></strong></p>
     <p th:text="${post.body}"></p>
 </div>
 </main>
+<footer th:replace="partials/section :: footer"></footer>
 </body>
 </html>

@@ -5,7 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light" th:fragment="navbar"><span class="navbar-brand mb-0 h1">Dice Roller</span></nav>
+<nav class="navbar navbar-light bg-light" th:fragment="navbar"><span class="navbar-brand mb-0 h1">Dice Roller</span>
+    <ul>
+        <li>
+            <a th:href="@{posts/create}">Create</a>
+        </li>
+        <li>
+            <a th:href="@{/posts}">Posts</a>
+        </li>
+        <li>Search</li>
+    </ul>
+</nav>
 <h1 th:fragment="header">Welcome to Dice Roller</h1>
 <footer th:fragment="footer">
     &copy; 2020
