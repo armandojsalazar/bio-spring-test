@@ -1,19 +1,32 @@
 package com.codeup.blog.models;
 
 
+import org.hibernate.validator.constraints.br.TituloEleitoral;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts")
 public class Post {
-    private String title;
-    private String body;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String author;
+
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false)
+    private String body;
+    public Post(){}
 
 
-    public Post(String title, String body, long id, String author){
+    public Post(String title, String body, long id){
         this.title = title;
         this.body = body;
         this.id = id;
-        this.author = author;
+
     }
+
 
     public String getTitle() {
         return title;
@@ -39,11 +52,6 @@ public class Post {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
-    }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+
 }

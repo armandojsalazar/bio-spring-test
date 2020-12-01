@@ -16,8 +16,8 @@ public class PostController {
     @GetMapping("/posts")
     public String index(Model model){
         ArrayList<Post> allPost = new ArrayList<Post>();
-        Post newPost1 = new Post("Codeup", "Is an awesome school!", 1, "Mando");
-        Post newPost2 = new Post("UTSA", "Is okay I guess!", 2, "Sally");
+        Post newPost1 = new Post("Codeup", "Is an awesome school!", 1);
+        Post newPost2 = new Post("UTSA", "Is okay I guess!", 2);
         allPost.add(newPost1);
         allPost.add(newPost2);
         model.addAttribute("posts", allPost);
@@ -26,7 +26,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String Post(@PathVariable long id, Model model){
-        Post newPost = new Post("Codeup", "Is an awesome school!", id, "Bob");
+        Post newPost = new Post("Codeup", "Is an awesome school!", id);
         model.addAttribute("post", newPost);
         return "/posts/show";
     }
