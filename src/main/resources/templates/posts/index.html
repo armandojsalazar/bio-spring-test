@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="partials/section :: navbar"></nav>
+<nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
     <header th:replace="partials/header :: header('Welcome to the Blog Post!')"></header>
 <!--<h1 th:text="${posts.get(0).title}"></h1>-->
 <!--<p th:text="${posts.get(0).body}"></p>-->
@@ -17,6 +17,9 @@
     <p th:text="'ID #' + ${post.id}"></p>
     <h1 th:text="${post.title}"></h1>
     <p th:text="${post.body}"></p>
+    <form th:action="@{'posts/edit/' + ${post.id}}" th:method="get">
+    <button>Edit</button>
+    </form>
 </div>
 </main>
 <footer th:replace="partials/section :: footer"></footer>

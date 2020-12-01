@@ -44,6 +44,24 @@ public class PostController {
         return "posts/index";
     }
 
+    @GetMapping("/posts/edit/{id}")
+    public String showEditForm(@PathVariable long id, Model model){
+
+        model.addAttribute("postToEdit", postDao.getOne(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/edit/{id}")
+    public String editPost (
+            @RequestParam(name= "title") String title,
+            @RequestParam(name= "body") String body,
+            @PathVariable long id
+    ){
+        Post post = new Post(title, body, id);
+        Post dbPost = postDao.save(post);
+        return "posts/index";
+    }
+
 
 
 }

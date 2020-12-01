@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light" th:fragment="navbar"><span class="navbar-brand mb-0 h1">Dice Roller</span>
+<nav class="navbar navbar-light bg-light" th:fragment="navbar(title)"><span class="navbar-brand mb-0 h1"><th:block th:text="${title}"></th:block></span>
     <ul>
         <li>
             <a th:href="@{posts/create}">Create</a>

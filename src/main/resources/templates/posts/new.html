@@ -5,7 +5,7 @@
     <title>Create Post</title>
 </head>
 <body>
-<nav th:replace="partials/section :: navbar"></nav>
+<nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
 <header th:replace="partials/header :: header('Welcome to the Blog Post!')"></header>
 <form th:action="@{/posts/create}" th:method="post">
     Title:
