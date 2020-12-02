@@ -13,11 +13,12 @@
     <input th:value="${postToEdit.title}" name="title">
     <br>
     Body:
-    <input th:value="${postToEdit.body}" name="body">
+    <br>
+        <textarea rows="10" cols="60" th:text="${postToEdit.body}" name="body"></textarea>
     <br>
     <input type="submit">
     </form>
-    <form th:action="@{/posts/edit/{id}/delete(id=${id})}" th:method="post">
+    <form th:action="@{'/posts/delete/' + ${postToEdit.id}}" th:method="post">
         <button>Delete</button>
     </form>
     </main>

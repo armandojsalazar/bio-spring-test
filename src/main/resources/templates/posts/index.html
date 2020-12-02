@@ -20,6 +20,9 @@
     <form th:action="@{'posts/edit/' + ${post.id}}" th:method="get">
     <button>Edit</button>
     </form>
+    <form th:action="@{'/posts/delete/' + ${post.id}}" th:method="post">
+        <button>Delete</button>
+    </form>
 </div>
 </main>
 <footer th:replace="partials/section :: footer"></footer>

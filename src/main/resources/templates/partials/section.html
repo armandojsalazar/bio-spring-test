@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light" th:fragment="navbar(title)"><span class="navbar-brand mb-0 h1"><th:block th:text="${title}"></th:block></span>
-    <ul>
-        <li>
-            <a th:href="@{posts/create}">Create</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar(title)">
+    <span class="navbar-brand mb-0 h1">
+        <th:block th:text="${title}"></th:block>
+    </span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/posts/create}">Create</a>
         </li>
-        <li>
-            <a th:href="@{/posts}">Posts</a>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/posts}">Posts</a>
         </li>
-        <li>Search</li>
     </ul>
+        <form class="form-inline my-2 my-lg-0" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 </nav>
-<header th:fragment="header(header)"><span><th:block th:text="${header}"></th:block></span></header>
+<header th:fragment="header(header)">
+    <span><th:block th:text="${header}"></th:block></span>
+</header>
 <footer th:fragment="footer">
     &copy; 2020
 </footer>
