@@ -16,6 +16,9 @@
     <br>
     <input type="submit">
     </form>
+    <form th:action="@{/posts/edit/{id}/delete(id=${id})}" th:method="post">
+        <button>Delete</button>
+    </form>
 
 </body>
 </html>

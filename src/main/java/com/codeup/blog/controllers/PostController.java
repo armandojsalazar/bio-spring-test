@@ -37,11 +37,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String submitPost( @RequestParam(name= "title") String title,
-                              @RequestParam(name= "body") String body){
+    public String submitPost(
+            @RequestParam(name= "title") String title,
+            @RequestParam(name= "body") String body){
         Post post = new Post(title, body);
         Post dbPost = postDao.save(post);
-        return "posts/index";
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/edit/{id}")
@@ -59,7 +60,15 @@ public class PostController {
     ){
         Post post = new Post(title, body, id);
         Post dbPost = postDao.save(post);
-        return "posts/index";
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/edit/{id}/delete")
+    public String deletePost(
+            @PathVariable long id
+    ){
+        postDao.deleteById(id);
+        return "redirect:/posts";
     }
 
 
