@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Create Post</title>
 </head>
 <body>
 <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
-<header th:replace="partials/header :: header('Welcome to the Blog Post!')"></header>
+<header th:replace="partials/section :: header('Welcome to the Blog Post!')"></header>
+<main class="container">
 <form th:action="@{/posts/create}" th:method="post">
     Title:
     <input name="title">
@@ -16,6 +17,6 @@
     <br>
     <input type="submit">
 </form>
-
+</main>
 </body>
 </html>

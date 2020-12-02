@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
+<head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -16,7 +16,7 @@
         <li>Search</li>
     </ul>
 </nav>
-<h1 th:fragment="header">Welcome to Dice Roller</h1>
+<header th:fragment="header(header)"><span><th:block th:text="${header}"></th:block></span></header>
 <footer th:fragment="footer">
     &copy; 2020
 </footer>

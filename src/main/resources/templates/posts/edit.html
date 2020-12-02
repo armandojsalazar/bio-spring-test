@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Create Post</title>
 </head>
 <body>
     <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
-        <header th:replace="partials/header :: header('Welcome to the Blog Post!')"></header>
+        <header th:replace="partials/section :: header('Welcome to the Blog Post!')"></header>
+    <main class="container">
     <form th:action="@{'/posts/edit/' + ${postToEdit.id}}" method="post">
     Title:
     <input th:value="${postToEdit.title}" name="title">
@@ -19,6 +20,6 @@
     <form th:action="@{/posts/edit/{id}/delete(id=${id})}" th:method="post">
         <button>Delete</button>
     </form>
-
+    </main>
 </body>
 </html>
