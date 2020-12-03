@@ -65,8 +65,9 @@ public class PostController {
             @RequestParam(name= "body") String body,
             @PathVariable long id
     ){
-        Post post = new Post(title, body, id);
-        Post dbPost = postDao.save(post);
+        User user = userDao.getOne(1L);
+        Post post = new Post(title, body, id, user);
+        postDao.save(post);
         return "redirect:/posts";
     }
 

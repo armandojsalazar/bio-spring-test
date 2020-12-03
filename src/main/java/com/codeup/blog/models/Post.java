@@ -24,6 +24,8 @@ public class Post {
 
     public Post(){}
 
+
+
     public Post(String title, String body, User owner){
         this.title = title;
         this.body = body;
@@ -35,6 +37,14 @@ public class Post {
         this.title = title;
         this.body = body;
         this.id = id;
+
+    }
+
+    public Post(String title, String body, long id, User user) {
+        this.title = title;
+        this.body = body;
+        this.id = id;
+        this.owner = user;
 
     }
 
