@@ -1,16 +1,16 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
-import com.codeup.blog.repos.PostRespository;
+import com.codeup.blog.repos.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
-    private final PostRespository postDao;
+    private final PostRepository postDao;
 
-    public PostController(PostRespository postDao){
+    public PostController(PostRepository postDao){
         this.postDao = postDao;
     }
     @GetMapping("/posts")
