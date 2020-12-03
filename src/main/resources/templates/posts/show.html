@@ -13,7 +13,8 @@
             <h1 th:text="${post.title}"></h1>
                 <p th:text="${post.body}"></p>
                 <p th:text="${post.id}"></p>
-
+            <p> Created by User: <span th:text="${post.owner.username}"></span> </p>
+            <p>email: <span th:text="${post.owner.email}"></span></p>
         </div>
     </main>
 </body>

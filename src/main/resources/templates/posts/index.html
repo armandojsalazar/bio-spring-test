@@ -17,6 +17,7 @@
     <p th:text="'ID #' + ${post.id}"></p>
     <h1 th:text="${post.title}"></h1>
     <p th:text="${post.body}"></p>
+    <p>Created by: <span th:text="${post.getOwner().getUsername()}"></span></p>
     <form th:action="@{'posts/edit/' + ${post.id}}" th:method="get">
     <button>Edit</button>
     </form>

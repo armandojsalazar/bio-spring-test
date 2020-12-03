@@ -1,6 +1,7 @@
 package com.codeup.blog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name= "users")
@@ -18,16 +19,21 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password;
 
+    @OneToMany
+    private List<Post> post;
+
     public User() {
     }
 
-    public User(long id, String username, String email, String password) {
+    //Read
+    public User(long id, String username, String email, String password, List<Post> post) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.post = post;
     }
-
+    //Create
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
@@ -64,5 +70,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(List<Post> post) {
+        this.post = post;
     }
 }
