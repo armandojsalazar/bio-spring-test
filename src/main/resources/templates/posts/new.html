@@ -8,13 +8,13 @@
 <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
 <header th:replace="partials/section :: header('Welcome to the Blog Post!')"></header>
 <main class="container">
-<form th:action="@{/posts/create}" th:method="post">
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
     Title:
-    <input name="title">
+    <input th:field="*{title}">
     <br>
     Body:
     <br>
-    <textarea rows="10" cols="60" name="body"></textarea>
+    <textarea rows="10" cols="60" th:field="*{body}"></textarea>
     <br>
     <input type="submit">
 </form>
