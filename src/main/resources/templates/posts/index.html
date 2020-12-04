@@ -15,7 +15,9 @@
 <div class="card " th:each="post : ${posts}">
     <hr>
     <p th:text="'ID #' + ${post.id}"></p>
-    <h1 th:text="${post.title}"></h1>
+    <h1>
+        <a th:text="${post.title}" th:href="@{'posts/' + ${post.id}}" ></a>
+    </h1>
     <p th:text="${post.body}"></p>
     <p>Created by: <span th:text="${post.getOwner().getUsername()}"></span></p>
     <form th:action="@{'posts/edit/' + ${post.id}}" th:method="get">

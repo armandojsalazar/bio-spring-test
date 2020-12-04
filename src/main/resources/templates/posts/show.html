@@ -8,14 +8,19 @@
 <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
 <header th:replace="partials/section:: header('Welcome to the Blog Post!')"></header>
     <main class="container text-center">
-        <div class="card" th:object="post">
-
-            <h1 th:field="*{title}"></h1>
-                <p th:field="*{body}"></p>
-                <p th:field="*{id}"></p>
-            <p> Created by User: <span th:field="*{owner.username}"></span> </p>
-            <p>email: <span th:text="*{owner.email}"></span></p>
+        <div class="card" >
+            <h1 th:text="${post.title}"></h1>
+                <p th:text="${post.body}"></p>
+                <p th:text="${post.id}"></p>
+            <p> Created by User: <span th:text="${post.owner.username}"></span> </p>
+            <p>email: <span th:text="${post.owner.email}"></span></p>
         </div>
+        <form th:action="@{'/posts/edit/' + ${post.id}}" th:method="get">
+            <button>Edit</button>
+        </form>
+        <form th:action="@{'/posts/delete/' + ${post.id}}" th:method="post">
+            <button>Delete</button>
+        </form>
     </main>
 </body>
 </html>
