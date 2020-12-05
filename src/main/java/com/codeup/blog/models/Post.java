@@ -22,6 +22,8 @@ public class Post {
     @JoinColumn(nullable = false, name="owner_id")
     private User owner;
 
+
+
     public Post(){}
 
 

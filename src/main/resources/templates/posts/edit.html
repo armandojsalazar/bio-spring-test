@@ -8,15 +8,15 @@
     <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
         <header th:replace="partials/section :: header('Welcome to the Blog Post!')"></header>
     <main class="container">
-    <form th:action="@{'/posts/edit/' + ${postToEdit.id}}" method="post">
-    Title:
-    <input th:value="${postToEdit.title}" name="title">
+    <form th:action="@{'/posts/edit/' + ${postToEdit.id}}" method="post" th:object="${postToEdit}">
+    <label for="title">Title:</label>
+    <input th:field="*{title}" id="title">
     <br>
-    Body:
+    <label for="body">Body:</label>
     <br>
-        <textarea rows="10" cols="60" th:text="${postToEdit.body}" name="body"></textarea>
+        <textarea rows="10" cols="60" th:field="*{body}" id="body"></textarea>
     <br>
-    <input type="submit">
+    <button>Update Post</button>
     </form>
     <form th:action="@{'/posts/delete/' + ${postToEdit.id}}" th:method="post">
         <button>Delete</button>

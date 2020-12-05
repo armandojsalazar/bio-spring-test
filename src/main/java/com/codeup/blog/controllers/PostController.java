@@ -4,6 +4,7 @@ import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import com.codeup.blog.repos.PostRepository;
 import com.codeup.blog.repos.UserRepository;
+import com.codeup.blog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao){
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService){
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
+
+    //Show all posts
     @GetMapping("/posts")
     public String index(Model model){
 //        ArrayList<Post> allPost = new ArrayList<Post>();
@@ -28,6 +33,8 @@ public class PostController {
         return "/posts/index";
     }
 
+
+    //Show one post
     @GetMapping("/posts/{id}")
     public String Post(@PathVariable long id, Model model){
         Post userPost = postDao.getOne(id);
@@ -35,6 +42,8 @@ public class PostController {
         return "/posts/show";
     }
 
+
+    //create a post
     @GetMapping("/posts/create")
     public String showCreateForm(Model model){
         model.addAttribute("post", new Post());
@@ -46,7 +55,8 @@ public class PostController {
 
         User user = userDao.getOne(1L);
         postToSave.setOwner(user);
-        postDao.save(postToSave);
+        Post post = postDao.save(postToSave);
+        emailService.prepareAndSend(post, "You created a post!", "Thank you for creating a post! You may now view your post at http://localhost:8080/posts");
         return "redirect:/posts";
     }
 
@@ -66,8 +76,8 @@ public class PostController {
     ){
         User user = userDao.getOne(1L);
         postToEdit.setOwner(user);
-
-        postDao.save(postToEdit);
+        Post post = postDao.save(postToEdit);
+        emailService.prepareAndSend(post, "Successful edit!", "Your post has successfully been updated. You may view your updated post at http://localhost:8080/posts .");
         return "redirect:/posts";
     }
 
