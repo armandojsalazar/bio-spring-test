@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" ang="en" xmlns:th="http://www.thymeleaf.org"
+                      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +8,13 @@
 <body>
 <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
     <header th:replace="partials/section:: header('Welcome to the Blog Post!')"></header>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
 <!--<h1 th:text="${posts.get(0).title}"></h1>-->
 <!--<p th:text="${posts.get(0).body}"></p>-->
 <!--<h1 th:text="${posts.get(1).title}"></h1>-->
@@ -20,10 +28,10 @@
     </h1>
     <p th:text="${post.body}"></p>
     <p>Created by: <span th:text="${post.getOwner().getUsername()}"></span></p>
-    <form th:action="@{'posts/edit/' + ${post.id}}" th:method="get">
+    <form th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
     <button>Edit</button>
     </form>
-    <form th:action="@{'/posts/delete/' + ${post.id}}" th:method="post">
+    <form th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
         <button>Delete</button>
     </form>
 </div>

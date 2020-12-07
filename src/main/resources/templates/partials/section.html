@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/posts/create}">Create</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" th:href="@{/posts}">Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/rick-roll}">Don't Click Me!</a>
+            <a class="nav-link" th:href="@{/posts/create}">Create</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/sign-up}">Register</a>
         </li>
 <!--        <li class="nav-item">-->
 <!--            <a class="nav-link" th:href="@{/posts/login}">Login</a>-->
@@ -28,6 +28,19 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <ul>
+            <li>
+                <form th:action="@{/login}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Login</button>
+                </form>
+            </li>
+            <!-- More links here... -->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+        </ul>
     </div>
 </nav>
 <header th:fragment="header(header)">

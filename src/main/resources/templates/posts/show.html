@@ -15,10 +15,10 @@
             <p> Created by User: <span th:text="${post.owner.username}"></span> </p>
             <p>email: <span th:text="${post.owner.email}"></span></p>
         </div>
-        <form th:action="@{'/posts/edit/' + ${post.id}}" th:method="get">
+        <form th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
             <button>Edit</button>
         </form>
-        <form th:action="@{'/posts/delete/' + ${post.id}}" th:method="post">
+        <form th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
             <button>Delete</button>
         </form>
     </main>

@@ -8,7 +8,7 @@
     <nav th:replace="partials/section :: navbar('Blog Posts')"></nav>
         <header th:replace="partials/section :: header('Welcome to the Blog Post!')"></header>
     <main class="container">
-    <form th:action="@{'/posts/edit/' + ${postToEdit.id}}" method="post" th:object="${postToEdit}">
+    <form th:action="@{'/posts/' + ${postToEdit.id} + '/edit'}" method="post" th:object="${postToEdit}">
     <label for="title">Title:</label>
     <input th:field="*{title}" id="title">
     <br>
@@ -18,7 +18,7 @@
     <br>
     <button>Update Post</button>
     </form>
-    <form th:action="@{'/posts/delete/' + ${postToEdit.id}}" th:method="post">
+    <form th:action="@{'/posts/' + ${postToEdit.id} + '/delete'}" th:method="post">
         <button>Delete</button>
     </form>
     </main>
