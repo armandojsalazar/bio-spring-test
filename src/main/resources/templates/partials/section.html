@@ -21,9 +21,6 @@
         <li sec:authorize="!isAuthenticated()" class="nav-item">
             <a class="nav-link" th:href="@{/sign-up}">Register</a>
         </li>
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" th:href="@{/posts/login}">Login</a>-->
-<!--        </li>-->
     </ul>
 <!--        <form class="form-inline my-2 my-lg-0" >-->
 <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
@@ -42,7 +39,13 @@
     </div>
 </nav>
 <header th:fragment="header(header)">
-    <span><th:block th:text="${header}"></th:block></span>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 text-center"><span><th:block th:text="${header}"></th:block></span></h1>
+            <p class="lead text-center">Make a post then adios!</p>
+        </div>
+    </div>
+
 </header>
 <footer th:fragment="footer">
     &copy; 2020
