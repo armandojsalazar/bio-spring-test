@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,16 +12,17 @@
         <div class="card" >
             <h1 th:text="${post.title}"></h1>
                 <p th:text="${post.body}"></p>
-                <p th:text="${post.id}"></p>
             <p> Created by User: <span th:text="${post.owner.username}"></span> </p>
             <p>email: <span th:text="${post.owner.email}"></span></p>
         </div>
+        <div sec:authorize="isAuthenticated()">
         <form th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
             <button>Edit</button>
         </form>
         <form th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
             <button>Delete</button>
         </form>
+        </div>
     </main>
 </body>
 </html>

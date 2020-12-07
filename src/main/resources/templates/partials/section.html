@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head('Posts')">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,9 +16,9 @@
             <a class="nav-link" th:href="@{/posts}">Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/posts/create}">Create</a>
+            <a class="nav-link" th:href="@{/posts/create}">Create a Post</a>
         </li>
-        <li class="nav-item">
+        <li sec:authorize="!isAuthenticated()" class="nav-item">
             <a class="nav-link" th:href="@{/sign-up}">Register</a>
         </li>
 <!--        <li class="nav-item">-->
@@ -29,11 +30,13 @@
 <!--            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>-->
 <!--        </form>-->
         <ul class="navbar-nav my-2 my-lg-0">
-            <li class="nav-item">
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
                 <a class="nav-link" th:href="@{/login}">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-dark btn" style="margin-top: 8px">Logout</button>
+                </form>
             </li>
         </ul>
     </div>

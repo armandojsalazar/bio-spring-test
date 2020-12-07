@@ -10,8 +10,5 @@ public class AuthenticationController {
         return "users/login";
     }
 
-    @GetMapping("/logout")
-    public String showLogoutForm(){
-        return "users/login";
-    }
+
 }

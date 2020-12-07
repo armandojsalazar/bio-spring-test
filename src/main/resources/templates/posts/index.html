@@ -28,12 +28,14 @@
     </h1>
     <p th:text="${post.body}"></p>
     <p>Created by: <span th:text="${post.getOwner().getUsername()}"></span></p>
+    <div sec:authorize="isAuthenticated()">
     <form th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
     <button>Edit</button>
     </form>
     <form th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
         <button>Delete</button>
     </form>
+    </div>
 </div>
 </main>
 <footer th:replace="partials/section :: footer"></footer>
