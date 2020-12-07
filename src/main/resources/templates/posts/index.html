@@ -10,9 +10,11 @@
     <header th:replace="partials/section:: header('Welcome to the Blog Post!')"></header>
 <div sec:authorize="isAuthenticated()">
     This content is only shown to authenticated users.
-
+    <br>
     User ID: <span th:text="${#authentication.principal.id}"/>
+    <br>
     Username: <span th:text="${#authentication.principal.username}"/>
+    <br>
     Email: <span th:text="${#authentication.principal.email}"/>
 </div>
 <!--<h1 th:text="${posts.get(0).title}"></h1>-->
