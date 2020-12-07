@@ -14,15 +14,16 @@
                 <p th:text="${post.body}"></p>
             <p> Created by User: <span th:text="${post.owner.username}"></span> </p>
             <p>email: <span th:text="${post.owner.email}"></span></p>
+            <div sec:authorize="isAuthenticated()">
+            <form th:if="${#authentication.principal.id == post.owner.id}" th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
+                <button>Edit</button>
+            </form>
+            <form th:if="${#authentication.principal.id == post.owner.id}" th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
+                <button>Delete</button>
+            </form>
+            </div>
         </div>
-        <div sec:authorize="isAuthenticated()">
-        <form th:action="@{'posts/' + ${post.id} + '/edit'}" th:method="get">
-            <button>Edit</button>
-        </form>
-        <form th:action="@{'posts/' + ${post.id} + '/delete'}" th:method="post">
-            <button>Delete</button>
-        </form>
-        </div>
+
     </main>
 </body>
 </html>

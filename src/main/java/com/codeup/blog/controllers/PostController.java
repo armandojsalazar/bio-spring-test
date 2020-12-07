@@ -75,8 +75,8 @@ public class PostController {
             @PathVariable long id,
             @ModelAttribute Post postToEdit
     ){
-        User user = userDao.getOne(1L);
-        postToEdit.setOwner(user);
+        User userDb = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        postToEdit.setOwner(userDb);
         Post post = postDao.save(postToEdit);
         emailService.prepareAndSend(post, "Successful edit!", "Your post has successfully been updated. You may view your updated post at http://localhost:8080/posts .");
         return "redirect:/posts";
