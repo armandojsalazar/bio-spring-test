@@ -31,7 +31,7 @@ public class PostController {
 //        allPost.add(newPost1);
 //        allPost.add(newPost2);
         model.addAttribute("posts", postDao.findAll());
-        return "/posts/index";
+        return "posts/index";
     }
 
 
@@ -40,7 +40,7 @@ public class PostController {
     public String Post(@PathVariable long id, Model model){
         Post userPost = postDao.getOne(id);
         model.addAttribute("post", userPost);
-        return "/posts/show";
+        return "posts/show";
     }
 
 
