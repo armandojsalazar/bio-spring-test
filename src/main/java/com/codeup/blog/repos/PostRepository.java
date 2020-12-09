@@ -7,4 +7,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Post findByTitle(String title); // select * from ads where title = ?
     Post findFirstByTitle(String title); // select * from ads where title = ? limit 1
     Post deleteById(long id);
+
 }
